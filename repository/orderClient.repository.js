@@ -4,7 +4,7 @@ const Order = require('../models/order');
 exports.new = async(body) => {
     let order = new Order.clientOrder(
         {
-            ingredients: body.ingredients
+            body
         }
     );
 
@@ -28,9 +28,7 @@ exports.delete = async(id) => {
 };
 
 exports.update = async(id, body) => {
-    const update  = { ingredients: body.ingredients , status: body.status };
-
-    await Order.clientOrder.findByIdAndUpdate(id, {$set: update}, { useFindAndModify: false }).exec();
+    await Order.clientOrder.findByIdAndUpdate(id, {$set: body}, { useFindAndModify: false }).exec();
 
     let updatedOrder = await Order.clientOrder.findById(id).exec();
     return updatedOrder;

@@ -5,7 +5,11 @@ const OrderSchema = new Schema({
     created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
     status:  { type: String, default: 'created' },
-    ingredients: {type: String, max: 200}
+    recipe: {type: String, max: 100},
+    date: {type: Date, default: Date.now},
+    delivery_place: {type: String, max: 200, default: "Famalicão"},
+    service: {type: Boolean, default: true},
+    payment: {type: String, default: "MBWay", max: 100}
 });
 
 const clientOrder = mongoose.client_conn.model('Order', OrderSchema);
