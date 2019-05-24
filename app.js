@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const mongodb = require('./config/mongoDB');
-var cors = require('cors');
+const cors = require('cors');
+const receivers = require('./rabbit/receivers');
 
 let app = express();
 const bodyParser = require('body-parser');
@@ -15,7 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-mongodb.connect();
+receivers.clientReceiver();
+receivers.orderReceiver();
 
 app.use(require('./routes'));
 

@@ -27,3 +27,22 @@ To get the Node server running locally:
 - `repository/` - This folder contains the repository pattern.
 - `rabbit/` - This folder contains the generic messaging sender.
 
+## Docker
+
+* Building an image
+
+```bash
+$ docker-compose build
+```
+
+* Running containers
+
+```bash
+$ docker-compose up
+```
+
+* Stopping containers
+
+```bash
+$ docker-compose down
+```

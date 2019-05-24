@@ -1,8 +1,8 @@
 const amqp = require('amqplib/callback_api');
 
-exports.send = (EXCHANGE_NAME, orderDTO, operation, sender) => {
+exports.send = (EXCHANGE_NAME, message) => {
 
-    amqp.connect('amqp://localhost', function(error0, connection) {
+    amqp.connect(process.env.MESSAGE_QUEUE, function(error0, connection) {
         if (error0) {
             throw error0;
         }
@@ -15,9 +15,9 @@ exports.send = (EXCHANGE_NAME, orderDTO, operation, sender) => {
                 durable: false
             });
 
-            channel.publish(EXCHANGE_NAME, '', Buffer.from(JSON.stringify(orderDTO)));
+            channel.publish(EXCHANGE_NAME, '', Buffer.from(message));
 
-            console.log(` [x] ${sender} Sent: Order ${operation} `);
+            console.log(` [x] ${EXCHANGE_NAME} Sent: ${message} `);
 
             setTimeout(function() {
                 connection.close();

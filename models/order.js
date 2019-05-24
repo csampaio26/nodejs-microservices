@@ -12,10 +12,10 @@ const OrderSchema = new Schema({
     payment: {type: String, default: "MBWay", max: 100}
 });
 
-const clientOrder = mongoose.client_conn.model('Order', OrderSchema);
-const orderOrder = mongoose.order_conn.model('Order', OrderSchema);
+const orders_conn = process.env.MONGO_CONN_ORDERS;
 
-module.exports = {
-    clientOrder,
-    orderOrder
-};
+const orders = mongoose.createConnection(orders_conn, { useNewUrlParser: true });
+
+const Order = orders.model('Order', OrderSchema);
+
+module.exports = Order;
