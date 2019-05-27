@@ -33,7 +33,7 @@ exports.cancel = async(req, res, next) => {
 
 exports.getAll = async(req, res, next) => {
     try {
-        await clientQRSService.getAll();
+        await clientQRSService.getAll(res);
     } catch (e) {
         res.status(500).send({
             message: 'Failed to get orders.'+ e

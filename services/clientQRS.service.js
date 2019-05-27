@@ -1,9 +1,9 @@
 const orderRepository = require('../repository/order.repository');
 const logRepository = require('../repository/logClient.repository');
 
-exports.getAll = async () => {
+exports.getAll = async (res) => {
     await logRepository.newQRS("Orders returned.");
     const all = await orderRepository.getAll();
-    return all;
+    res.status(202).send(all);
 };
 
