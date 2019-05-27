@@ -4,5 +4,6 @@ const router = express.Router();
 router.get('/', (req, res) => res.send('Hello From INSIS service'));
 router.use('/client', require('./client'));
 router.use('/order', require('./order'));
+router.use('/transport', require('./transport'));
 
 module.exports = router;

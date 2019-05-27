@@ -52,3 +52,30 @@ exports.confirm = async(id, body) => {
     let updatedOrder = await Order.findById(id).exec();
     return updatedOrder;
 };
+
+
+exports.delivering = async(id, body) => {
+
+    body.status = "delivering";
+
+    await Order.findByIdAndUpdate(id, {$set: body}, { useFindAndModify: false }).exec();
+
+    let updatedOrder = await Order.findById(id).exec();
+    return updatedOrder;
+};
+
+exports.delivered = async(id, body) => {
+
+    body.status = "delivered";
+
+    await Order.findByIdAndUpdate(id, {$set: body}, { useFindAndModify: false }).exec();
+
+    let updatedOrder = await Order.findById(id).exec();
+    return updatedOrder;
+};
+
+
+exports.get = async(id,) => {
+    const order = await Order.findById(id).exec();
+    return order;
+};

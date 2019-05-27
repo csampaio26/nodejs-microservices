@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 
 receivers.clientReceiver();
 receivers.orderReceiver();
+receivers.transportReceiver();
 
 app.use(require('./routes'));
 

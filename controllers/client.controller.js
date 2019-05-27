@@ -3,8 +3,7 @@ const clientCRSService = require('../services/clientCRS.service')
 
 exports.new = async(req, res, next) => {
     try {
-        const data = await clientCRSService.new(req.body);
-        res.status(200).send(data);
+         await clientCRSService.new(req.body, res);
     } catch (e) {
         res.status(500).send({
             message: 'Failed to create new order.'+ e
@@ -14,8 +13,7 @@ exports.new = async(req, res, next) => {
 
 exports.update = async(req, res, next) => {
     try {
-        const data = await clientCRSService.update(req.params.id, req.body);
-        res.status(200).send(data);
+         await clientCRSService.update(req.params.id, req.body, res);
     } catch (e) {
         res.status(500).send({
             message: 'Failed to update order.'+ e
@@ -25,8 +23,7 @@ exports.update = async(req, res, next) => {
 
 exports.cancel = async(req, res, next) => {
     try {
-        const data = await clientCRSService.cancel(req.params.id);
-        res.status(200).send(data);
+       await clientCRSService.cancel(req.params.id, res);
     } catch (e) {
         res.status(500).send({
             message: 'Failed to delete order.'+ e
@@ -36,8 +33,7 @@ exports.cancel = async(req, res, next) => {
 
 exports.getAll = async(req, res, next) => {
     try {
-        const data = await clientQRSService.getAll();
-        res.status(200).send(data);
+        await clientQRSService.getAll();
     } catch (e) {
         res.status(500).send({
             message: 'Failed to get orders.'+ e
