@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const receivers = require('./rabbit/receivers');
 
 let app = express();
@@ -14,6 +15,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'pug')
+app.set("views", path.join(__dirname, "views"));
 
 receivers.clientReceiver();
 receivers.orderReceiver();
