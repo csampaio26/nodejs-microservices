@@ -15,7 +15,6 @@ To get the Node server running locally:
 - [expressjs](https://github.com/expressjs/express) - The server for handling and routing HTTP requests
 - [mongoose](https://github.com/Automattic/mongoose) - For modeling and mapping MongoDB data to javascript 
 - [amqp](https://www.rabbitmq.com/getstarted.html) - Advanced Message Queuing Protocol
-- [axios](https://www.rabbitmq.com/getstarted.html) - To make http requests internally
 
 ## Application Structure
 
@@ -27,22 +26,3 @@ To get the Node server running locally:
 - `repository/` - This folder contains the repository pattern.
 - `rabbit/` - This folder contains the generic messaging sender.
 
-## Docker
-
-* Building an image
-
-```bash
-$ docker-compose build
-```
-
-* Running containers
-
-```bash
-$ docker-compose up
-```
-
-* Stopping containers
-
-```bash
-$ docker-compose down
-```
