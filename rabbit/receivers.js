@@ -1,6 +1,7 @@
 const amqp = require('amqplib/callback_api');
 const logOrder = require('../repository/logOrder.repository');
 const logClient = require('../repository/logClient.repository');
+const logTransport = require('../repository/logTransport.repository');
 
 
 exports.clientReceiver = () => {
@@ -116,7 +117,7 @@ exports.transportReceiver = () => {
                     channel.consume(q.queue, async function(msg) {
                         if(msg.content) {
                             console.log(` [x] Transport received: ${ msg.content.toString() } `);
-                            await logOrder.new(msg.content.toString())
+                            await logTransport.new(msg.content.toString())
                         }
                     }, {
                         noAck: true
